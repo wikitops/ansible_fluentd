@@ -1,0 +1,19 @@
+---
+
+- name: FLUENTD ON DEBIAN | Install prerequisites
+  apt:
+    name: "{{ item }}"
+    state: present
+  with_items:
+    - python-software-properties
+    - apt-transport-https
+
+- name: FLUENTD ON DEBIAN | Import key
+  apt_key:
+    url: "{{ fluentd_apt_key }}"
+    state: present
+
+- name: FLUENTD ON DEBIAN | Add repository
+  apt_repository:
+    repo: "{{ fluentd_apt_repository }}"
+    state: present

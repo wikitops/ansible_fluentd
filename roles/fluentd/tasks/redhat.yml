@@ -1,0 +1,9 @@
+---
+
+- name: FLUENTD ON REDHAT | Add repository
+  yum_repository:
+    name: fluentd
+    description: Fluentd repository
+    baseurl: "{{ fluentd_yum_repository }}"
+    gpgcheck: yes
+    gpgkey: "{{ fluentd_yum_key }}"

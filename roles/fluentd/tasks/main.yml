@@ -1,0 +1,29 @@
+---
+
+- name: FLUENTD | Manage Debian environment
+  import_tasks: debian.yml
+  when: ansible_os_family == 'Debian' or ansible_os_family == 'Ubuntu'
+
+- name: FLUENTD | Manage Redhat environment
+  import_tasks: redhat.yml
+  when: ansible_os_family == 'RedHat' or ansible_os_family == 'CentOS'
+
+- name: FLUENTD | Installation
+  package:
+    name: "td-agent={{ fluentd_version }}*"
+    update_cache: yes
+    state: present
+  notify: Restart fluentd
+
+- name: FLUENTD | Configuration
+  template:
+    src: etc/td-agent/td-agent.conf.j2
+    dest: /etc/td-agent/td-agent.conf
+    owner: root
+    group: root
+    mode: 0644
+  notify: Restart fluentd
+
+- name: FLUENTD | Install plugins
+  import_tasks: plugins.yml
+  when: fluentd_plugins != ""

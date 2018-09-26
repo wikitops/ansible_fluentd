@@ -1,0 +1,10 @@
+---
+
+- name: FLUENTD | Install plugins
+  gem:
+    name: "{{ item }}"
+    executable: /opt/td-agent/embedded/bin/fluent-gem
+    state: latest
+    user_install: no
+  with_items: "{{ fluentd_plugins | default([]) }}"
+  notify: Restart td-agent

@@ -1,0 +1,19 @@
+---
+
+###
+# FLUENTD
+###
+
+# Version
+fluentd_version: 3.2.0
+
+# Debian
+fluentd_apt_key: https://packages.treasuredata.com/GPG-KEY-td-agent
+fluentd_apt_repository: "deb http://packages.treasuredata.com/3/{{ ansible_distribution|lower }}/{{ ansible_distribution_release|lower }}/ {{ ansible_distribution_release|lower }} contrib"
+
+# RedHat
+fluentd_yum_key: https://packages.treasuredata.com/GPG-KEY-td-agent
+fluentd_yum_repository: https://download.fedoraproject.org/pub/epel/$releasever/$basearch/
+
+# Plugins
+fluentd_plugins: []
