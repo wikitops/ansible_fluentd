@@ -6,5 +6,5 @@
     executable: /opt/td-agent/embedded/bin/fluent-gem
     state: latest
     user_install: no
-  with_items: "{{ fluentd_plugins | default([]) }}"
+  loop: "{{ fluentd_plugins | default([]) }}"
   notify: Restart td-agent

@@ -5,7 +5,7 @@
 ###
 
 # Version
-fluentd_version: 3.2.0
+fluentd_version: 3.5.0
 
 # Debian
 fluentd_apt_key: https://packages.treasuredata.com/GPG-KEY-td-agent
